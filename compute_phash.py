@@ -38,10 +38,12 @@ def hash_zigzag(phash: int) -> int:
 def main() -> None:
     target_dir = sys.argv[1]
     target_files = glob.glob(target_dir + "/*.jpg")
-    print("file_path,phash,phash_zigzag")
-    for target_file in tqdm(target_files):
-        phash = int(str(imagehash.phash(Image.open(target_file))), 16)
-        print(",".join((target_file, str(phash), str(hash_zigzag(phash)))))
+    output_file = target_dir.replace("/", "_") + ".csv"
+    with open(output_file, "w") as f:
+        f.write("file_path,phash,phash_zigzag\n")
+        for target_file in tqdm(target_files):
+            phash = int(str(imagehash.phash(Image.open(target_file))), 16)
+            f.write(",".join((target_file, str(phash), str(hash_zigzag(phash)))) + "\n")
 
 
 if __name__ == "__main__":
