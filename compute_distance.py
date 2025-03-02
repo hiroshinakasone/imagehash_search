@@ -21,7 +21,6 @@ def output_distance_histogram(c: dict[int, int], output_file_name: str) -> None:
         f.write(f"combination N: {sum(c.values())}\n")
         for k in sorted(c.keys()):
             f.write(f"{k}: {c[k]}\n")
-        f.write("\n")
 
 
 def main():
