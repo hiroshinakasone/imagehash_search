@@ -36,9 +36,7 @@ def main():
         for j in range(i + 1, n):
             d = hamming_distance(df.iloc[i]["phash"], df.iloc[j]["phash"])
             if d <= 10:
-                csv_rows.append(
-                    f"{d},{df.iloc[i]['file_path']},{df.iloc[j]['file_path']}"
-                )
+                csv_rows.append(f"{d},{df.iloc[i]['file_path']},{df.iloc[j]['file_path']}")
                 output_distance(i, csv_rows, distance_output_file)
             v = c.get(d, 0)
             c[d] = v + 1
