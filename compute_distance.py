@@ -32,10 +32,8 @@ def main():
 
     c = {}
     csv_rows = ["distance,file1,file2"]
-    for i in tqdm(range(n)):
-        for j in range(i, n):
-            if i == j:
-                continue
+    for i in tqdm(range(n - 1)):
+        for j in range(i + 1, n):
             d = hamming_distance(df.iloc[i]["phash"], df.iloc[j]["phash"])
             if d <= 10:
                 csv_rows.append(
